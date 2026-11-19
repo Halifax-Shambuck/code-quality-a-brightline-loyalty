@@ -13,14 +13,7 @@ public class PointsCalculator {
             // base points: one point for every GHS 10 spent
             int points = (int) (amount / 10);
 
-            // apply the member's tier multiplier
-            if (member.getTier().equals("STANDARD")) {
-                points = points * 1;
-            } else if (member.getTier().equals("SILVER")) {
-                points = (int) (points * 1.5);
-            } else if (member.getTier().equals("GOLD")) {
-                points = points * 2;
-            }
+            points = member.getTier().applyTo(points);
 
             // loyalty bonus for big spenders
             if (amount > 500) {
