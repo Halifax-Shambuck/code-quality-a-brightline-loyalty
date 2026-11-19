@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 // They are known defects that the refactor changes on purpose.
 class PointsCalculatorCharacterizationTest {
 
-    private final PointsCalculator calculator = new PointsCalculator();
+    private final PointsCalculator calculator = new PointsCalculator(new InMemoryMemberRepository());
 
     @ParameterizedTest(name = "STANDARD member m1 spending {0} earns {1}")
     @CsvSource({

@@ -1,7 +1,11 @@
 package com.brightline.loyalty;
 
 public class PointsCalculator {
-    private final MemberRepository repository = new InMemoryMemberRepository();
+    private final MemberRepository repository;
+
+    public PointsCalculator(MemberRepository repository) {
+        this.repository = repository;
+    }
 
     public int calculatePoints(String memberId, double amount) {
         validatePurchase(memberId, amount);
