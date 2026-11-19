@@ -2,6 +2,7 @@ package com.brightline.loyalty;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class InMemoryMemberRepository implements MemberRepository {
 
@@ -14,7 +15,7 @@ public class InMemoryMemberRepository implements MemberRepository {
     }
 
     @Override
-    public Member findById(String id) {
-        return members.get(id); // returns null when the id is not found
+    public Optional<Member> findById(String id) {
+        return Optional.ofNullable(members.get(id));
     }
 }

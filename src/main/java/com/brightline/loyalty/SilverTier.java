@@ -5,6 +5,6 @@ public class SilverTier implements Tier {
 
     @Override
     public int applyTo(int basePoints) {
-        return (int) (basePoints * MULTIPLIER);
+        return Math.toIntExact((long) (basePoints * MULTIPLIER));
     }
 }

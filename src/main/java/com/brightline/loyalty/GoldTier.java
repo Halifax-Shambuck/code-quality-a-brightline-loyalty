@@ -5,6 +5,6 @@ public class GoldTier implements Tier {
 
     @Override
     public int applyTo(int basePoints) {
-        return basePoints * MULTIPLIER;
+        return Math.multiplyExact(basePoints, MULTIPLIER);
     }
 }

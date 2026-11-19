@@ -7,6 +7,12 @@ public class Demo {
 
         System.out.println("Result m1 (STANDARD), GHS 100  -> " + calculator.calculatePoints("m1", 100));
         System.out.println("Result m2 (GOLD), GHS 250      -> " + calculator.calculatePoints("m2", 250));
-        System.out.println("Result unknown member, GHS 100 -> " + calculator.calculatePoints("unknown", 100));
+
+        try {
+            System.out.println("Result unknown member, GHS 100 -> "
+                    + calculator.calculatePoints("unknown", 100));
+        } catch (MemberNotFoundException e) {
+            System.out.println("Result unknown member, GHS 100 -> " + e.getMessage());
+        }
     }
 }
