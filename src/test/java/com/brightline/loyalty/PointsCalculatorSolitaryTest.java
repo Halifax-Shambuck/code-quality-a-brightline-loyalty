@@ -22,8 +22,9 @@ class PointsCalculatorSolitaryTest {
 
     @BeforeEach
     void createCalculator() {
-        calculator = new PointsCalculator(repository);
+        calculator = new PointsCalculator(repository, new BasePointsRule(), new BigSpenderBonusRule());
     }
+
 
     @Test
     void repositoryFailurePropagatesUnchanged() {

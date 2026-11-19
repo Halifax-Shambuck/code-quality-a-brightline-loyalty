@@ -9,7 +9,8 @@ class PointsCalculatorTest {
 
     @Test
     void awardsPointsToAMember() {
-        PointsCalculator calculator = new PointsCalculator(new InMemoryMemberRepository());
+        PointsCalculator calculator = new PointsCalculator(
+                new InMemoryMemberRepository(), new BasePointsRule(), new BigSpenderBonusRule());
         int points = calculator.calculatePoints("m1", 100.0);
         assertTrue(points > 0); // it awarded some points
     }
@@ -24,7 +25,8 @@ class PointsCalculatorTest {
 
     @Test
     void awardsPointsForAPurchase() {
-        PointsCalculator calculator = new PointsCalculator(new InMemoryMemberRepository());
+        PointsCalculator calculator = new PointsCalculator(
+                new InMemoryMemberRepository(), new BasePointsRule(), new BigSpenderBonusRule());
         int points = calculator.calculatePoints("m3", 200.0);
         assertNotNull(points); // a result came back
     }

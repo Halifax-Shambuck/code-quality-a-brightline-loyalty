@@ -12,7 +12,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 // They are known defects that the refactor changes on purpose.
 class PointsCalculatorCharacterizationTest {
 
-    private final PointsCalculator calculator = new PointsCalculator(new InMemoryMemberRepository());
+    private final PointsCalculator calculator = new PointsCalculator(
+            new InMemoryMemberRepository(), new BasePointsRule(), new BigSpenderBonusRule());
 
     @ParameterizedTest(name = "STANDARD member m1 spending {0} earns {1}")
     @CsvSource({
@@ -51,21 +52,5 @@ class PointsCalculatorCharacterizationTest {
     })
     void goldMemberPoints(double amount, int expectedPoints) {
         assertEquals(expectedPoints, calculator.calculatePoints("m2", amount));
-    }
-
-    // Pins the println that is being moved out of the calculator. Delete with it.
-    @Test
-    void printsAwardedLineForKnownMember() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream captured = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(captured));
-        try {
-            calculator.calculatePoints("m1", 100);
-        } finally {
-            System.setOut(originalOut);
-        }
-
-        assertEquals("Awarded 10 points to Kofi Mensah" + System.lineSeparator(),
-                captured.toString());
     }
 }

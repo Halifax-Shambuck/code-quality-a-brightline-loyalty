@@ -2,32 +2,33 @@ package com.brightline.loyalty;
 
 public class PointsCalculator {
     private final MemberRepository repository;
+    private final BasePointsRule basePointsRule;
+    private final BigSpenderBonusRule bonusRule;
 
-    public PointsCalculator(MemberRepository repository) {
+    public PointsCalculator(MemberRepository repository, BasePointsRule basePointsRule, BigSpenderBonusRule bonusRule) {
         this.repository = repository;
+        this.basePointsRule = basePointsRule;
+        this.bonusRule = bonusRule;
     }
 
     public int calculatePoints(String memberId, double amount) {
         validatePurchase(memberId, amount);
 
-        Member member = repository.findById(memberId).orElseThrow(() -> new MemberNotFoundException(memberId));
-
-        int points;
+        Member member = findMember(memberId);
 
         try {
-            points = member.getTier().applyTo(Math.toIntExact((long) (amount / 10)));
+            int points = member.getTier().applyTo(basePointsRule.calculateBasePoints(amount));
 
-            if (amount > 500) {
-                points = Math.addExact(points, 50);
-            }
+            return Math.addExact(points, bonusRule.calculateBonus(amount));
         } catch (ArithmeticException e) {
             throw new InvalidPurchaseException(
                     "Points for amount " + amount + " exceed the int range", e);
         }
+    }
 
-        System.out.println("Awarded " + points + " points to " + member.getName());
-
-        return points;
+    private Member findMember(String memberId) {
+        return repository.findById(memberId)
+                .orElseThrow(() -> new MemberNotFoundException(memberId));
     }
 
     private void validatePurchase(String memberId, double amount) {
