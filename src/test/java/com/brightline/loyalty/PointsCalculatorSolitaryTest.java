@@ -60,4 +60,13 @@ class PointsCalculatorSolitaryTest {
 
         verifyNoInteractions(repository);
     }
+
+    @Test
+    void aTierDefinedByTheTestIsAppliedWithoutChangingTheCalculator() {
+        Member member = new Member("m9", "Test Member", basePoints -> basePoints + 7);
+        when(repository.findById("m9")).thenReturn(Optional.of(member));
+
+        assertEquals(27, calculator.calculatePoints("m9", 200));
+    }
+
 }
