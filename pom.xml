@@ -106,7 +106,17 @@
                     <excludedClasses>
                         <param>com.brightline.loyalty.Demo</param>
                     </excludedClasses>
+                    <mutationThreshold>100</mutationThreshold>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>mutation-gate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
