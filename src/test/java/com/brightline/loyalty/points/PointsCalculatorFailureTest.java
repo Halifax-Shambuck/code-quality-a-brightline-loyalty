@@ -1,10 +1,13 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.brightline.loyalty.exception.InvalidPurchaseException;
+import com.brightline.loyalty.exception.MemberNotFoundException;
+import com.brightline.loyalty.repository.InMemoryMemberRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

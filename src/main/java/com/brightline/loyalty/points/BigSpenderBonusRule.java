@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
 
 public class BigSpenderBonusRule {
     private static final double SPEND_THRESHOLD = 500;

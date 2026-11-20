@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
 
 public class BasePointsRule {
     private static final int AMOUNT_PER_POINT = 10;

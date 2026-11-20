@@ -1,5 +1,11 @@
 package com.brightline.loyalty;
 
+import com.brightline.loyalty.exception.MemberNotFoundException;
+import com.brightline.loyalty.points.BasePointsRule;
+import com.brightline.loyalty.points.BigSpenderBonusRule;
+import com.brightline.loyalty.points.PointsCalculator;
+import com.brightline.loyalty.repository.InMemoryMemberRepository;
+
 public class Demo {
     public static void main(String[] args) {
         PointsCalculator calculator = new PointsCalculator(

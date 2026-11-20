@@ -1,7 +1,8 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.brightline.loyalty.repository.InMemoryMemberRepository;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

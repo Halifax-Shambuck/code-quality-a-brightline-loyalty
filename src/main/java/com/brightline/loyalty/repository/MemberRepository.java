@@ -1,4 +1,6 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.repository;
+
+import com.brightline.loyalty.domain.Member;
 
 import java.util.Optional;
 

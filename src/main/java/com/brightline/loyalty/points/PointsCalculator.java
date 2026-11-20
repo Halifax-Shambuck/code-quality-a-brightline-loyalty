@@ -1,4 +1,9 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
+
+import com.brightline.loyalty.exception.InvalidPurchaseException;
+import com.brightline.loyalty.domain.Member;
+import com.brightline.loyalty.exception.MemberNotFoundException;
+import com.brightline.loyalty.repository.MemberRepository;
 
 public class PointsCalculator {
     private final MemberRepository repository;

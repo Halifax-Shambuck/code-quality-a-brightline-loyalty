@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.domain;
 
 public class StandardTier implements Tier {
 

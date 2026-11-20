@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.domain;
 
 public class SilverTier implements Tier {
     private static final double MULTIPLIER = 1.5;

@@ -1,4 +1,9 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.repository;
+
+import com.brightline.loyalty.domain.GoldTier;
+import com.brightline.loyalty.domain.Member;
+import com.brightline.loyalty.domain.SilverTier;
+import com.brightline.loyalty.domain.StandardTier;
 
 import java.util.HashMap;
 import java.util.Map;

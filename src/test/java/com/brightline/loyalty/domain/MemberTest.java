@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.domain;
 
 import org.junit.jupiter.api.Test;
 

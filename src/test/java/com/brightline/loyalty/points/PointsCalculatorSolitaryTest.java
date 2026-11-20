@@ -1,9 +1,15 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.points;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.Optional;
+
+import com.brightline.loyalty.domain.GoldTier;
+import com.brightline.loyalty.domain.Member;
+import com.brightline.loyalty.exception.InvalidPurchaseException;
+import com.brightline.loyalty.exception.MemberNotFoundException;
+import com.brightline.loyalty.repository.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

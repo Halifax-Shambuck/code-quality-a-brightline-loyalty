@@ -1,4 +1,4 @@
-package com.brightline.loyalty;
+package com.brightline.loyalty.exception;
 
 public class InvalidPurchaseException extends RuntimeException {
 
