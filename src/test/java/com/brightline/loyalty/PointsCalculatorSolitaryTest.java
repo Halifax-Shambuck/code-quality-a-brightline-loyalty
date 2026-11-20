@@ -1,9 +1,7 @@
 package com.brightline.loyalty;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.verifyNoInteractions;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,13 +26,15 @@ class PointsCalculatorSolitaryTest {
 
     @Test
     void repositoryFailurePropagatesUnchanged() {
-        when(repository.findById("m1")).thenThrow(new IllegalStateException("store unavailable"));
+        IllegalStateException failure = new IllegalStateException("store unavailable");
+        when(repository.findById("m1")).thenThrow(failure);
 
         IllegalStateException thrown = assertThrows(IllegalStateException.class,
                 () -> calculator.calculatePoints("m1", 100));
 
-        assertEquals("store unavailable", thrown.getMessage());
+        assertSame(failure, thrown);
     }
+
 
     @Test
     void missingMemberIsReportedWithItsId() {
@@ -52,6 +52,7 @@ class PointsCalculatorSolitaryTest {
         when(repository.findById("m9")).thenReturn(Optional.of(member));
 
         assertEquals(40, calculator.calculatePoints("m9", 200));
+        verify(repository).findById("m9");
     }
 
     @Test
@@ -69,5 +70,14 @@ class PointsCalculatorSolitaryTest {
 
         assertEquals(27, calculator.calculatePoints("m9", 200));
     }
+
+    @Test
+    void aTierDefinedByTheTestIsAppliedBeforeTheBonus() {
+        Member member = new Member("m9", "Test Member", basePoints -> basePoints + 7);
+        when(repository.findById("m9")).thenReturn(Optional.of(member));
+
+        assertEquals(117, calculator.calculatePoints("m9", 600));
+    }
+
 
 }
