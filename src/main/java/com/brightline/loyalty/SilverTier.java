@@ -5,6 +5,7 @@ public class SilverTier implements Tier {
 
     @Override
     public int applyTo(int basePoints) {
+        // SilverTier: fractional points are dropped, never rounded up.
         return Math.toIntExact((long) (basePoints * MULTIPLIER));
     }
 }

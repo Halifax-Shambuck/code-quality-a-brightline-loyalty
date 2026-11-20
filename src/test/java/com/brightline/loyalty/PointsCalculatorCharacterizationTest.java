@@ -1,15 +1,11 @@
 package com.brightline.loyalty;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-// Negative, NaN, infinite and overflowing amounts, and unknown ids, are not pinned here.
-// They are known defects that the refactor changes on purpose.
+// Failure cases (unknown ids, invalid amounts, overflow) are covered in
+// PointsCalculatorFailureTest.
 class PointsCalculatorCharacterizationTest {
 
     private final PointsCalculator calculator = new PointsCalculator(

@@ -66,6 +66,7 @@ class PointsCalculatorFailureTest {
         assertInstanceOf(ArithmeticException.class, thrown.getCause());
     }
 
+    // 21474835970 / 10 = 2147483597 base points, plus the 50 bonus = Integer.MAX_VALUE
     @Test
     void largestRepresentableTotalIsAccepted() {
         assertEquals(Integer.MAX_VALUE, calculator.calculatePoints("m1", 21474835970.0));

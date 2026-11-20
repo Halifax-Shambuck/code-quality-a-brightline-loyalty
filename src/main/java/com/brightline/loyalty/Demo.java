@@ -1,6 +1,5 @@
 package com.brightline.loyalty;
 
-// A tiny runner so you can see the calculator work before you change anything.
 public class Demo {
     public static void main(String[] args) {
         PointsCalculator calculator = new PointsCalculator(
