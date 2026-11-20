@@ -1,17 +1,9 @@
 package com.brightline.loyalty;
 
-public class Member {
-    private final String id;
-    private final String name;
-    private final Tier tier;
+import java.util.Objects;
 
-    public Member(String id, String name, Tier tier) {
-        this.id = id;
-        this.name = name;
-        this.tier = tier;
+public record Member(String id, String name, Tier tier) {
+    public Member {
+        Objects.requireNonNull(tier, "tier must not be null");
     }
-
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public Tier getTier() { return tier; }
 }

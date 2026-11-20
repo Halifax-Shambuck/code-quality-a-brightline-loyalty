@@ -17,7 +17,7 @@ public class PointsCalculator {
         Member member = findMember(memberId);
 
         try {
-            int points = member.getTier().applyTo(basePointsRule.calculateBasePoints(amount));
+            int points = member.tier().applyTo(basePointsRule.calculateBasePoints(amount));
 
             return Math.addExact(points, bonusRule.calculateBonus(amount));
         } catch (ArithmeticException e) {
